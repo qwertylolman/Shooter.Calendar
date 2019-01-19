@@ -1,5 +1,5 @@
 ﻿using MvvmCross.ViewModels;
-using Shooter.Calendar.Core.Common;
+using Shooter.Calendar.Core.Common.Extensions;
 using Shooter.Calendar.Core.Managers.KeyGenerator;
 using Shooter.Calendar.Core.RealmExtra.CopyManager;
 using Shooter.Calendar.Core.RealmExtra.CopyManager.PredefinedProviders;

@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
+using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
 using Shooter.Calendar.Core.POCO.Entities;
 using Shooter.Calendar.Core.ViewModels.Abstract;
-using Shooter.Calendar.Core.Common.RealmExtensions;
-using System.Linq;
 
 namespace Shooter.Calendar.Core.ViewModels.EditorPages
 {

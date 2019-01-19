@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Shooter.Calendar.Core.Attributes;
-using Shooter.Calendar.Core.Common;
+using Shooter.Calendar.Core.Common.Extensions;
 
 namespace Shooter.Calendar.Core.ViewModels.Abstract
 {

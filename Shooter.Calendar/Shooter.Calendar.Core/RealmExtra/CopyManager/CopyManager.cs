@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Realms;
 using Shooter.Calendar.Core.Attributes;
-using Shooter.Calendar.Core.Common;
+using Shooter.Calendar.Core.Common.Extensions;
 
 namespace Shooter.Calendar.Core.RealmExtra.CopyManager
 {
