@@ -201,3 +201,5 @@ FakesAssemblies/
 
 #Xamarin Forms
 Resource.Designer.cs
+FodyWeavers.xsd
+RealmWeaver.Fody.dll
