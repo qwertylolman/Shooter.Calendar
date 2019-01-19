@@ -1,6 +1,8 @@
 ﻿using MvvmCross.ViewModels;
 using Shooter.Calendar.Core.Common;
 using Shooter.Calendar.Core.Managers.KeyGenerator;
+using Shooter.Calendar.Core.RealmExtra.CopyManager;
+using Shooter.Calendar.Core.RealmExtra.CopyManager.PredefinedProviders;
 using Shooter.Calendar.Core.ViewModels.MainPage;
 
 namespace Shooter.Calendar.Core
@@ -19,6 +21,10 @@ namespace Shooter.Calendar.Core
         private void RegisterInIoc()
         {
             IoCExtensions.RegisterSingleton<IKeyGenerator, KeyGenerator>();
+
+            IoCExtensions.RegisterSingleton<ICopyManager, CopyManager>();
+
+            IoCExtensions.RegisterManyAsSingleton<ICopyManagerProvider, ReflectionCopyProvider>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using Realms;
 using MvvmCross;
+using Shooter.Calendar.Core.RealmExtra.CopyManager;
 
 namespace Shooter.Calendar.Core.Common.RealmExtensions
 {
