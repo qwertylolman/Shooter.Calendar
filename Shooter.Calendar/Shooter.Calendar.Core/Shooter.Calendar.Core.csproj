@@ -22,6 +22,10 @@
     <Folder Include="Attributes\" />
     <Folder Include="ViewModels\MainPage\" />
     <Folder Include="ViewModels\Abstract\" />
+    <Folder Include="ViewModels\EditorPages\" />
+    <Folder Include="RealmExtra\" />
+    <Folder Include="RealmExtra\CopyManager\" />
+    <Folder Include="RealmExtra\CopyManager\PredefinedProviders\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />

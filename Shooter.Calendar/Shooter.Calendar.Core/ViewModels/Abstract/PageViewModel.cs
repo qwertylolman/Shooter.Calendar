@@ -20,7 +20,7 @@ namespace Shooter.Calendar.Core.ViewModels.Abstract
         {
         }
 
-        protected abstract TResult Result { get; }
+        protected virtual TResult Result { get; set; }
 
         protected override Task<bool> PerformCloseAsync()
             => PerformCloseAsync(Result);
