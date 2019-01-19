@@ -19,6 +19,8 @@ namespace Shooter.Calendar.Core.ViewModels.Abstract
             ItemSelectedCommand = new MvxAsyncCommand<TItem>(ItemSelectedAsync);
         }
 
+        public TItem SelectedItem { get; private set; }
+
         public ICommand ItemSelectedCommand { get; }
 
         public IEnumerable ItemsCollection 
@@ -36,15 +38,15 @@ namespace Shooter.Calendar.Core.ViewModels.Abstract
 
         private Task ItemSelectedAsync([NotNull] TItem item)
         {
+            SelectedItem = item;
             return OnItemSelectedAsync(item);
         }
 
         protected virtual async Task OnItemSelectedAsync(TItem item)
         {
-            var selectCommand = (item as IListItem)?.SelectCommand;
-            if (selectCommand != null)
+            if (item is IListItem listItem)
             {
-                await selectCommand.ExecuteAsync(item);
+                await listItem.SelectCommand.ExecuteAsync(item);
             }
         }
 

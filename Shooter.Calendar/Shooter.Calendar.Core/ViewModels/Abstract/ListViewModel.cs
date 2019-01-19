@@ -18,7 +18,9 @@ namespace Shooter.Calendar.Core.ViewModels.Abstract
 
     public abstract class ListViewModel<TParameter> : ListViewModel, IMvxViewModel<TParameter>
     {
-        public abstract void Prepare(TParameter parameter);
+        public virtual void Prepare(TParameter parameter)
+        {
+        }
     }
 
     public abstract class ListViewModel : GenericListViewModel<object>, IListViewModel

@@ -5,7 +5,7 @@ using System.Linq;
 using MvvmCross;
 using Shooter.Calendar.Core.Attributes;
 
-namespace Shooter.Calendar.Core.Common
+namespace Shooter.Calendar.Core.Common.Extensions
 {
     public static class IoCExtensions
     {

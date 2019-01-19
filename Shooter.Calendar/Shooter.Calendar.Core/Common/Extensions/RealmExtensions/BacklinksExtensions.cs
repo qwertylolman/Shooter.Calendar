@@ -2,7 +2,7 @@
 using System.Linq;
 using Realms;
 
-namespace Shooter.Calendar.Core.Common.RealmExtensions
+namespace Shooter.Calendar.Core.Common.RealmExtensions.Extensions
 {
     public static class BacklinksExtensions
     {

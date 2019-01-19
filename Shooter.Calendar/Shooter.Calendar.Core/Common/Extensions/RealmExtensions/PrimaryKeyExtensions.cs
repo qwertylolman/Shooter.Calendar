@@ -4,7 +4,7 @@ using System.Reflection;
 using Realms;
 using Shooter.Calendar.Core.Attributes;
 
-namespace Shooter.Calendar.Core.Common.RealmExtensions
+namespace Shooter.Calendar.Core.Common.RealmExtensions.Extensions
 {
     public static class PrimaryKeyExtensions
     {

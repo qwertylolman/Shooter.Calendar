@@ -3,7 +3,7 @@ using Realms;
 using MvvmCross;
 using Shooter.Calendar.Core.RealmExtra.CopyManager;
 
-namespace Shooter.Calendar.Core.Common.RealmExtensions
+namespace Shooter.Calendar.Core.Common.RealmExtensions.Extensions
 {
     public static class CopyExtensions
     {
