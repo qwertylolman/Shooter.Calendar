@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MvvmCross" Version="6.2.2" />
+    <PackageReference Include="Fody" Version="3.3.5" />
+    <PackageReference Include="Realm" Version="3.4.0" />
+    <PackageReference Include="NullGuard.Fody" Version="1.8.5" />
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.2.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
+    <Folder Include="Managers\" />
+    <Folder Include="POCO\" />
+    <Folder Include="POCO\Entities\" />
+    <Folder Include="Managers\KeyGenerator\" />
+    <Folder Include="Common\" />
+    <Folder Include="Common\RealmExtensions\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="ViewModels\MainPage\" />
+    <Folder Include="ViewModels\Abstract\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Managers\ExerciseManager\IExerciseManager.cs" />
+  </ItemGroup>
+</Project>
