@@ -158,6 +158,9 @@
     <Compile Include="Binder\MemberInfoExtensions.cs" />
     <Compile Include="Binder\Unbinder.cs" />
     <Compile Include="Binder\ViewBinder.cs" />
+    <Compile Include="Views\Abstract\ActivityBase.cs" />
+    <Compile Include="Services\IntentRunner\IIntentRunner.cs" />
+    <Compile Include="Services\IntentRunner\IntentRunner.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -183,6 +186,8 @@
     <Folder Include="Recycler\TemplateSelectors\" />
     <Folder Include="Recycler\ViewHolders\" />
     <Folder Include="Binder\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\IntentRunner\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
