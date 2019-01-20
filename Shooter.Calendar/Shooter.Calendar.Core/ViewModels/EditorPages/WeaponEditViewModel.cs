@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -57,7 +58,7 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             var gaugeName = Gauge;
             if (string.IsNullOrEmpty(gaugeName) == false)
             {
-                var gauge = realm.All<Gauge>().FirstOrDefault(g => string.Equals(g.Name, Gauge));
+                var gauge = realm.All<Gauge>().FirstOrDefault(g => string.Equals(g.Name, gaugeName, StringComparison.OrdinalIgnoreCase));
                 if (gauge == null)
                 {
                     var result =
@@ -76,6 +77,9 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
                 weapon.Gauge = gauge;
             }
+
+            weapon.Name = Name;
+            weapon.Description = Description;
 
             realm.Write(() => realm.Add(weapon, update: true));
 

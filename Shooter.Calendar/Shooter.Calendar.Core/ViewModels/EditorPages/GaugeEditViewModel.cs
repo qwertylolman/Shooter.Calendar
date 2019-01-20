@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using MvvmCross.Commands;
 using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
 using Shooter.Calendar.Core.POCO.Entities;
@@ -43,10 +44,23 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
             RealmProvider.Write(r => r.Add(gauge, update: true));
 
+            Result = gauge;
+
             return CloseCommand.ExecuteAsync();
         }
 
         private bool CanSave()
             => true;
+
+        protected override Task LoadDataAsync(CancellationToken ct)
+        {
+            if (gauge != null)
+            {
+                Name = gauge.Name;
+                Description = gauge.Description;
+            }
+
+            return base.LoadDataAsync(ct);
+        }
     }
 }

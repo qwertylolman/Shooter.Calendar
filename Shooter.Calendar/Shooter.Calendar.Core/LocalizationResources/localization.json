@@ -1,3 +1,6 @@
 ﻿{
-  "weapon_edit_gauge_not_found": "Selected gauge not found. New one will be created."
+  "weapon_edit_gauge_not_found": "Selected gauge not found. New one will be created.",
+  "shotzone_edit_exists": "Shot zone with the same name already exists.",
+  "shot_edit_weapon_not_found": "Weapon not found. New one will be created.",
+  "shot_edit_shotzone_not_found": "Shot zone not found. New one will be created.",
 }
