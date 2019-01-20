@@ -46,7 +46,7 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             weapon = parameter;
         }
 
-        public async Task Save()
+        private async Task Save()
         {
             if (weapon == null)
             {
@@ -77,7 +77,9 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
                 weapon.Gauge = gauge;
             }
 
-            realm.Add(weapon, update: true);
+            realm.Write(() => realm.Add(weapon, update: true));
+
+            Result = weapon;
 
             await CloseCommand.ExecuteAsync();
         }
