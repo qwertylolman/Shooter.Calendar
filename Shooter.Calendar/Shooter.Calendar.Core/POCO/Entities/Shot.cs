@@ -1,4 +1,5 @@
 ﻿using Realms;
+using System.Linq;
 
 namespace Shooter.Calendar.Core.POCO.Entities
 {
@@ -12,5 +13,8 @@ namespace Shooter.Calendar.Core.POCO.Entities
         public Weapon Weapon { get; set; }
 
         public ShotZone ShotZone { get; set; }
+
+        [Backlink(nameof(Exercise.Shots))]
+        public IQueryable<Exercise> ExercisesBacklink { get; }
     }
 }

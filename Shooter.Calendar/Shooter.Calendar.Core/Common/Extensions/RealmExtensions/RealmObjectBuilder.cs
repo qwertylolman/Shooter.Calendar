@@ -3,7 +3,7 @@ using Shooter.Calendar.Core.Managers.KeyGenerator;
 using MvvmCross;
 using Realms;
 
-namespace Shooter.Calendar.Core.Common.RealmExtensions.Extensions
+namespace Shooter.Calendar.Core.Common.Extensions.RealmExtensions
 {
     public static class RealmObjectBuilder
     {

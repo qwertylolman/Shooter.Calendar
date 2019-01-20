@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using MvvmCross.Commands;
 using Shooter.Calendar.Core.Attributes;
 using Shooter.Calendar.Core.Common.Extensions;
-using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
+using Shooter.Calendar.Core.Common.Extensions.RealmExtensions;
 using Shooter.Calendar.Core.Managers.KeyGenerator;
 using Shooter.Calendar.Core.POCO.Entities;
 using Shooter.Calendar.Core.ViewModels.Abstract;
+using System;
 
 namespace Shooter.Calendar.Core.ViewModels.EditorPages
 {
@@ -40,6 +41,8 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
         public string Name { get; set; }
 
+        public DateTimeOffset TimeStamp { get; set; }
+
         protected override Task InitializeAsync()
             => Task.WhenAll(base.InitializeAsync(), LoadDataCommand.ExecuteAsync());
 
@@ -56,12 +59,13 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             {
                 Name = exercise.Name;
                 Description = exercise.Description;
+                TimeStamp = exercise.TimeStamp;
             }
 
             return base.LoadDataAsync(ct);
         }
 
-        protected override Task<IEnumerable<object>> GetItemsAsync(CancellationToken cancellationToken)
+        protected override Task<IEnumerable<object>> GetItemsAsync(CancellationToken ct)
         {
             var list = new List<object>();
             if (exercise != null)
@@ -81,6 +85,8 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
             exercise.Name = Name;
             exercise.Description = Description;
+            exercise.TimeStamp = TimeStamp;
+
             exercise.Shots.Clear();
             exercise.Shots.AddRange(ObservableCollection.OfType<Shot>());
 

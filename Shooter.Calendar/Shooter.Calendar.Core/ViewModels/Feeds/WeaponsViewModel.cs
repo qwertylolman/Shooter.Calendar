@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
-using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
+using Shooter.Calendar.Core.Common.Extensions.RealmExtensions;
 using Shooter.Calendar.Core.POCO.Entities;
 using Shooter.Calendar.Core.ViewModels.Abstract;
 using Shooter.Calendar.Core.ViewModels.EditorPages;

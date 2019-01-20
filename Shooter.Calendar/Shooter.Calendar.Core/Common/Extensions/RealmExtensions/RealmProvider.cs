@@ -2,7 +2,7 @@
 using System;
 using Shooter.Calendar.Core.Attributes;
 
-namespace Shooter.Calendar.Core.Common.RealmExtensions.Extensions
+namespace Shooter.Calendar.Core.Common.Extensions.RealmExtensions
 {
     public static class RealmProvider
     {
