@@ -3,4 +3,6 @@
   "shotzone_edit_exists": "Shot zone with the same name already exists.",
   "shot_edit_weapon_not_found": "Weapon not found. New one will be created.",
   "shot_edit_shotzone_not_found": "Shot zone not found. New one will be created.",
+  "are_you_sure_dialog_text": "Are you sure?",
+  "are_you_sure_dialog_title": "Please, confirm",
 }

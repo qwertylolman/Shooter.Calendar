@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 using Shooter.Calendar.Core.Attributes;
+using Shooter.Calendar.Core.Common.Extensions;
 using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
 using Shooter.Calendar.Core.Managers.KeyGenerator;
 using Shooter.Calendar.Core.POCO.Entities;
@@ -24,6 +25,7 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             SaveCommand = new MvxAsyncCommand(Save, CanSave);
             AddNewShotCommand = new MvxAsyncCommand(AddNewShot);
             CloneLastShotCommand = new MvxAsyncCommand(CloneLastShot);
+            DeleteAllShotsCommand = new MvxAsyncCommand(DeleteAllShots, CanDeletAllShots);
         }
 
         public IMvxAsyncCommand SaveCommand { get; }
@@ -31,6 +33,8 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
         public IMvxAsyncCommand AddNewShotCommand { get; }
 
         public IMvxAsyncCommand CloneLastShotCommand { get; }
+
+        public IMvxAsyncCommand DeleteAllShotsCommand { get; }
 
         public string Description { get; set; }
 
@@ -77,6 +81,8 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
             exercise.Name = Name;
             exercise.Description = Description;
+            exercise.Shots.Clear();
+            exercise.Shots.AddRange(ObservableCollection.OfType<Shot>());
 
             RealmProvider.Write(r => r.Add(exercise, update: true));
 
@@ -124,5 +130,20 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
             ObservableCollection.Add(lastShot);
         }
+
+        private async Task DeleteAllShots()
+        {
+            var shots = ObservableCollection.OfType<Shot>().ToList();
+            if (shots.Any() == false
+                || await NavigationService.ShowAreYouSureDialog() == false)
+            {
+                return;
+            }
+
+            ObservableCollection.RemoveItems(shots);
+        }
+
+        private bool CanDeletAllShots()
+            => true;
     }
 }

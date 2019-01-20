@@ -75,7 +75,7 @@ namespace Shooter.Calendar.Core.ViewModels.Abstract
             collection.ReplaceWith(newItems);
         }
 
-        protected virtual Task<IEnumerable<TItem>> GetItemsAsync(CancellationToken cancellationToken)
+        protected virtual Task<IEnumerable<TItem>> GetItemsAsync(CancellationToken ct)
             => Task.FromResult(new TItem[0] as IEnumerable<TItem>);
     }
 }

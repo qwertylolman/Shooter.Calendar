@@ -35,6 +35,7 @@
     <Folder Include="Common\Extensions\DialogExtensions\" />
     <Folder Include="LocalizationResources\" />
     <Folder Include="Localization\" />
+    <Folder Include="ViewModels\Feeds\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />
