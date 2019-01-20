@@ -3,7 +3,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
+using Shooter.Calendar.Core.Common.Extensions;
+using Shooter.Calendar.Core.Common.Extensions.DialogExtensions;
 using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
+using Shooter.Calendar.Core.Localization;
 using Shooter.Calendar.Core.POCO.Entities;
 using Shooter.Calendar.Core.ViewModels.Abstract;
 
@@ -19,13 +22,13 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
         {
             gauges = new List<Gauge>();
 
-            SaveCommand = new MvxCommand(Save, CanSave);
+            SaveCommand = new MvxAsyncCommand(Save, CanSave);
         }
 
         public IEnumerable<Gauge> Gauges
             => gauges;
 
-        public IMvxCommand SaveCommand { get; }
+        public IMvxAsyncCommand SaveCommand { get; }
 
         public string Gauge { get; set; }
 
@@ -43,7 +46,7 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             weapon = parameter;
         }
 
-        public void Save()
+        public async Task Save()
         {
             if (weapon == null)
             {
@@ -51,20 +54,36 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             }
 
             var realm = RealmProvider.GetInstance();
-
             var gaugeName = Gauge;
             if (string.IsNullOrEmpty(gaugeName) == false)
             {
                 var gauge = realm.All<Gauge>().FirstOrDefault(g => string.Equals(g.Name, Gauge));
+                if (gauge == null)
+                {
+                    var result =
+                        await NavigationService.ShowOkCancelDialogAsync(
+                            string.Empty,
+                            LocalizationExtensions.Get("weapon_edit_gauge_not_found"));
+
+                    if (result.IsNegative() == true)
+                    {
+                        return;
+                    }
+
+                    gauge = RealmObjectBuilder.Build<Gauge>();
+                    gauge.Name = gaugeName;
+                }
+
+                weapon.Gauge = gauge;
             }
 
             realm.Add(weapon, update: true);
+
+            await CloseCommand.ExecuteAsync();
         }
 
         public bool CanSave()
-        {
-            return true;
-        }
+            => true;
 
         protected override Task LoadDataAsync(CancellationToken ct)
         {

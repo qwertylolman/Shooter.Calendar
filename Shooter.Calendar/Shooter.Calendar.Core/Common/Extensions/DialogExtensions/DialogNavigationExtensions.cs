@@ -9,13 +9,13 @@ namespace Shooter.Calendar.Core.Common.Extensions
     public static class DialogNavigationExtensions
     {
         public static Task<IButton> ShowOkCancelDialogAsync(
-            [NotNull] IMvxNavigationService navigationService,
+            [NotNull] this IMvxNavigationService navigationService,
             string title,
             string text)
             => ShowDialogAsync(navigationService, title, text, new OkButton(), new CancelButton());
 
         public static Task<IButton> ShowDialogAsync(
-            [NotNull] IMvxNavigationService navigationService,
+            [NotNull] this IMvxNavigationService navigationService,
             string title,
             string text,
             params IButton[] buttons)
