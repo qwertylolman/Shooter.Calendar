@@ -1,4 +1,4 @@
-﻿namespace Localization
+﻿namespace Shooter.Calendar.Core.Localization
 {
     public class LocalizationConfig
     {

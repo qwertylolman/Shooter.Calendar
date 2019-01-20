@@ -18,6 +18,8 @@ namespace Shooter.Calendar.Core
             RegisterInIoc();
 
             Localization.InitializationExtensions.Initialize();
+
+            Localization.InitializationExtensions.AddLocalizationResources("localization");
         }
 
         private void RegisterInIoc()

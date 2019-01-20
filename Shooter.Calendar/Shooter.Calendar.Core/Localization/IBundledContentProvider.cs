@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Localization
+namespace Shooter.Calendar.Core.Localization
 {
     public interface IBundledContentProvider
     {

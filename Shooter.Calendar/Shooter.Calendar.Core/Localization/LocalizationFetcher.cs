@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using MvvmCross.Base;
 using Newtonsoft.Json;
+using Shooter.Calendar.Core.Attributes;
 
-namespace Localization
+namespace Shooter.Calendar.Core.Localization
 {
     public class LocalizationFetcher : ILocalizationFetcher
     {
@@ -16,8 +17,8 @@ namespace Localization
         private LocalizationConfig localizationConfig;
 
         public LocalizationFetcher(
-            IMvxResourceLoader resourceLoader,
-            ILookupDictionaryProvider lookupDictionaryProvider)
+            [NotNull] IMvxResourceLoader resourceLoader,
+            [NotNull] ILookupDictionaryProvider lookupDictionaryProvider)
         {
             this.resourceLoader = resourceLoader;
             this.lookupDictionaryProvider = lookupDictionaryProvider;

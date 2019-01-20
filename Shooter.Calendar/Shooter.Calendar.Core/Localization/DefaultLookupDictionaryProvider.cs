@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Localization
+namespace Shooter.Calendar.Core.Localization
 {
     public class DefaultLookupDictionaryProvider : ILookupDictionaryProvider
     {
