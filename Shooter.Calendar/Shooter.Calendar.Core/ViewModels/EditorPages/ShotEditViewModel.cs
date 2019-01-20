@@ -45,7 +45,7 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             {
                 Weapon = shot.Weapon?.Name;
                 ShotZone = shot.ShotZone?.Name;
-                NumberOfShots = shot.NumberOfShots;
+                NumberOfShots = shot.BulletsCount;
             }
 
             return base.LoadDataAsync(ct);

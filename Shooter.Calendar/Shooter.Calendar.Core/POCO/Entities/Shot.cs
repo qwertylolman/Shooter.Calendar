@@ -7,7 +7,7 @@ namespace Shooter.Calendar.Core.POCO.Entities
         [PrimaryKey]
         public string Id { get; set; }
 
-        public int NumberOfShots { get; set; }
+        public int BulletsCount { get; set; }
 
         public Weapon Weapon { get; set; }
 

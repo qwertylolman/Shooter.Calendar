@@ -28,7 +28,6 @@
     <Folder Include="RealmExtra\" />
     <Folder Include="RealmExtra\CopyManager\" />
     <Folder Include="RealmExtra\CopyManager\PredefinedProviders\" />
-    <Folder Include="ViewModels\DialogPages\" />
     <Folder Include="Dialog\" />
     <Folder Include="Dialog\Buttons\" />
     <Folder Include="Common\Extensions\" />

@@ -1,25 +1,36 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using MvvmCross.Commands;
+using Shooter.Calendar.Core.Attributes;
+using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
+using Shooter.Calendar.Core.Managers.KeyGenerator;
 using Shooter.Calendar.Core.POCO.Entities;
 using Shooter.Calendar.Core.ViewModels.Abstract;
-using Shooter.Calendar.Core.Common.RealmExtensions.Extensions;
 
 namespace Shooter.Calendar.Core.ViewModels.EditorPages
 {
     public class ExerciseEditViewModel : ListViewModel<Exercise, Exercise>
     {
+        private readonly IKeyGenerator keyGenerator;
+
         private Exercise exercise;
 
-        public ExerciseEditViewModel()
+        public ExerciseEditViewModel([NotNull] IKeyGenerator keyGenerator)
         {
+            this.keyGenerator = keyGenerator;
+
             SaveCommand = new MvxAsyncCommand(Save, CanSave);
+            AddNewShotCommand = new MvxAsyncCommand(AddNewShot);
+            CloneLastShotCommand = new MvxAsyncCommand(CloneLastShot);
         }
 
         public IMvxAsyncCommand SaveCommand { get; }
 
-        public IMvxCommand AddShotCommand { get; }
+        public IMvxAsyncCommand AddNewShotCommand { get; }
+
+        public IMvxAsyncCommand CloneLastShotCommand { get; }
 
         public string Description { get; set; }
 
@@ -33,6 +44,28 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
             base.Prepare(parameter);
 
             exercise = parameter;
+        }
+
+        protected override Task LoadDataAsync(CancellationToken ct)
+        {
+            if (exercise != null)
+            {
+                Name = exercise.Name;
+                Description = exercise.Description;
+            }
+
+            return base.LoadDataAsync(ct);
+        }
+
+        protected override Task<IEnumerable<object>> GetItemsAsync(CancellationToken cancellationToken)
+        {
+            var list = new List<object>();
+            if (exercise != null)
+            {
+                list.AddRange(exercise.Shots);
+            }
+
+            return Task.FromResult<IEnumerable<object>>(list);
         }
 
         private Task Save()
@@ -55,26 +88,41 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
         private bool CanSave()
             => true;
 
-        protected override Task LoadDataAsync(CancellationToken ct)
+        private async Task AddNewShot()
         {
-            if (exercise != null)
+            var result = await NavigationService.Navigate<ShotEditViewModel, Shot, Shot>(param: null);
+            if (result == null)
             {
-                Name = exercise.Name;
-                Description = exercise.Description;
+                return;
             }
 
-            return base.LoadDataAsync(ct);
+            ObservableCollection.Add(result);
         }
 
-        protected override Task<IEnumerable<object>> GetItemsAsync(CancellationToken cancellationToken)
+        private async Task CloneLastShot()
         {
-            var list = new List<object>();
-            if (exercise != null)
+            var lastShot = ObservableCollection.OfType<Shot>().LastOrDefault();
+            if (lastShot == null)
             {
-                list.AddRange(exercise.Shots);
+                await AddNewShotCommand.ExecuteAsync();
+                return;
             }
 
-            return Task.FromResult<IEnumerable<object>>(list);
+            lastShot = lastShot.CopyItem();
+            lastShot.Id = keyGenerator.GenerateKey();
+
+            var shotsCount = await NavigationService.Navigate<ShotsCounterViewModel, int, int>(lastShot.BulletsCount);
+            if (shotsCount > 0)
+            {
+                lastShot.BulletsCount = shotsCount;
+            }
+
+            if (lastShot == null)
+            {
+                return;
+            }
+
+            ObservableCollection.Add(lastShot);
         }
     }
 }
