@@ -11,6 +11,8 @@
     <PackageReference Include="NullGuard.Fody" Version="1.8.5" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="6.2.2" />
     <PackageReference Include="PropertyChanged.Fody" Version="2.6.0" />
+    <PackageReference Include="ResourceLoader" Version="3.1.18322.1" />
+    <PackageReference Include="MvvmCross.Plugin.File" Version="6.2.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
@@ -32,6 +34,7 @@
     <Folder Include="Common\Extensions\" />
     <Folder Include="Common\Extensions\RealmExtensions\" />
     <Folder Include="Common\Extensions\DialogExtensions\" />
+    <Folder Include="LocalizationResources\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />

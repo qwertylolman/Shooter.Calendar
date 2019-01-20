@@ -52,9 +52,10 @@ namespace Shooter.Calendar.Core.ViewModels.EditorPages
 
             var realm = RealmProvider.GetInstance();
 
-            if (string.IsNullOrEmpty(Gauge) == false)
+            var gaugeName = Gauge;
+            if (string.IsNullOrEmpty(gaugeName) == false)
             {
-                var gauges = realm.All<Gauge>().FirstOrDefault(g => string.Equals(g.Name, Gauge));
+                var gauge = realm.All<Gauge>().FirstOrDefault(g => string.Equals(g.Name, Gauge));
             }
 
             realm.Add(weapon, update: true);

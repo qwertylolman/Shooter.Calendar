@@ -16,6 +16,8 @@ namespace Shooter.Calendar.Core
             RegisterAppStart<MainViewModel>();
 
             RegisterInIoc();
+
+            Localization.InitializationExtensions.Initialize();
         }
 
         private void RegisterInIoc()
