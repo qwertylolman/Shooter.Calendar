@@ -1,6 +1,7 @@
 ﻿using Android.Content;
 using MvvmCross.Platforms.Android;
 using Shooter.Calendar.Core.Attributes;
+using Shooter.Calendar.Core.Common.Extensions;
 
 namespace Shooter.Calendar.Droid.Services.IntentRunner
 {
@@ -26,7 +27,6 @@ namespace Shooter.Calendar.Droid.Services.IntentRunner
             catch (ActivityNotFoundException e)
             {
                 e.LogToConsole();
-                DiagnosticLogger.Trace(e.ToDiagnosticString());
             }
         }
 

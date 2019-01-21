@@ -36,6 +36,7 @@
     <Folder Include="LocalizationResources\" />
     <Folder Include="Localization\" />
     <Folder Include="ViewModels\Feeds\" />
+    <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="FodyWeavers.xml" />

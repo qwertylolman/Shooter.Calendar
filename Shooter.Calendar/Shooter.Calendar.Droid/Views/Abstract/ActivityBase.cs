@@ -2,18 +2,20 @@
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
-using Android.Views;
-using Android.Support.V7.Widget;
 using Android.Support.V4.App;
+using Android.Support.V7.Widget;
+using Android.Views;
+using MvvmCross;
 using MvvmCross.Droid.Support.V7.AppCompat;
+using MvvmCross.IoC;
 using Shooter.Calendar.Core.ViewModels.Abstract;
 using Shooter.Calendar.Droid.Binder;
-using MvvmCross;
-using MvvmCross.IoC;
+using Shooter.Calendar.Droid.Extensions;
+using Shooter.Calendar.Droid.Services.IntentRunner;
 
 namespace Shooter.Calendar.Droid.Views.Activities
 {
-	public abstract class ActivityBase<TViewModel> : MvxAppCompatActivity<TViewModel>
+    public abstract class ActivityBase<TViewModel> : MvxAppCompatActivity<TViewModel>
 		where TViewModel : PageViewModel
 	{
 		public const int DefaultResourceId = -1;
@@ -40,30 +42,31 @@ namespace Shooter.Calendar.Droid.Views.Activities
 
         protected Toolbar Toolbar { get; private set; }
 
-        protected virtual int GetToolbarId() => DefaultResourceId;
+        protected virtual int GetToolbarId() 
+            => DefaultResourceId;
 
-		protected virtual int GetHomeAsUpIndicatorDrawableId() => DefaultResourceId;
+		protected virtual int GetHomeAsUpIndicatorDrawableId() 
+            => DefaultResourceId;
 
-		protected virtual bool GetUpNavigationEnabled() => true;
+		protected virtual bool GetUpNavigationEnabled() 
+            => true;
 
-		protected virtual bool ToolbarHasElevation() => false;
+		protected virtual bool ToolbarHasElevation() 
+            => false;
 
-		protected virtual int GetMenuResourceId() => DefaultResourceId;
+		protected virtual int GetMenuResourceId() 
+            => DefaultResourceId;
 
-		protected virtual int GetToolbarTitleStringId() => DefaultResourceId;
+		protected virtual int GetToolbarTitleStringId() 
+            => DefaultResourceId;
 
-		protected virtual string GetToolbarTitle() => string.Empty;
+		protected virtual string GetToolbarTitle() 
+            => string.Empty;
 
 		public virtual string ToolbarTitle
 		{
-			get 
-			{ 
-				return SupportActionBar.Title; 
-			}
-			set 
-			{ 
-				SupportActionBar.Title = value; 
-			}
+			get  { return SupportActionBar.Title; }
+			set { SupportActionBar.Title = value; }
 		}
 
 		protected override void OnCreate(Bundle bundle)
@@ -166,7 +169,7 @@ namespace Shooter.Calendar.Droid.Views.Activities
 			var intent = new Intent(Intent.ActionMain);
 			intent.AddCategory(Intent.CategoryHome);
 			intent.SetFlags(ActivityFlags.NewTask);
-			var intentRunner = Container.Resolve<IIntentRunner>();
+			var intentRunner = Mvx.IoCProvider.Resolve<IIntentRunner>();
 
 			intentRunner.Run(intent);
 		}

@@ -161,6 +161,10 @@
     <Compile Include="Views\Abstract\ActivityBase.cs" />
     <Compile Include="Services\IntentRunner\IIntentRunner.cs" />
     <Compile Include="Services\IntentRunner\IntentRunner.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Extensions\ActivityExtensions.cs" />
+    <Compile Include="Logger\Logger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -188,6 +192,8 @@
     <Folder Include="Binder\" />
     <Folder Include="Services\" />
     <Folder Include="Services\IntentRunner\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Logger\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
