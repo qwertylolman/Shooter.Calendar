@@ -165,6 +165,8 @@
     <Compile Include="App.cs" />
     <Compile Include="Extensions\ActivityExtensions.cs" />
     <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Views\Abstract\FragmentBase.cs" />
+    <Compile Include="Listeners\ViewOnClickListener.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -194,6 +196,7 @@
     <Folder Include="Services\IntentRunner\" />
     <Folder Include="Extensions\" />
     <Folder Include="Logger\" />
+    <Folder Include="Listeners\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
