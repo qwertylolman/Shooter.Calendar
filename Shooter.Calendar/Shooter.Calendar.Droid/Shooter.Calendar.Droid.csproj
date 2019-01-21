@@ -167,6 +167,7 @@
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Views\Abstract\FragmentBase.cs" />
     <Compile Include="Listeners\ViewOnClickListener.cs" />
+    <Compile Include="Views\Activities\MainActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -182,6 +183,11 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\layout\view_item_lists_default.axml" />
+    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\layout\activity_main.xml" />
+    <AndroidResource Include="Resources\layout\app_bar_main.xml" />
+    <AndroidResource Include="Resources\layout\nav_header_main.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -197,6 +203,7 @@
     <Folder Include="Extensions\" />
     <Folder Include="Logger\" />
     <Folder Include="Listeners\" />
+    <Folder Include="Views\Activities\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\AboutAssets.txt" />
